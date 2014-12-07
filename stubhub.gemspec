@@ -8,8 +8,10 @@ Gem::Specification.new do |spec|
   spec.version       = Stubhub::VERSION
   spec.authors       = ["Edward Huynh"]
   spec.email         = ["edward@edwardhuynh.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Stub an endpoint.}
+  spec.description   = %q{StubHub helps with developing against an endpoint. 
+                          Use stubbed responses to develop against and you will not have to rely on an endpoint
+                          that might be a tad unstable. }
   spec.homepage      = ""
   spec.license       = "MIT"
 
