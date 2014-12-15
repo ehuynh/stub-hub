@@ -11,8 +11,5 @@ module Stubhub
         end,
       )
     end
-
-    def stop
-    end
   end
 end
