@@ -15,8 +15,12 @@ module Stubhub
 
 	class FileStore
 
+		def initialize(seed_directory)
+			@seed_directory = seed_directory
+		end
+
 		def file_for_uri uri
-			file_path = uri.gsub(/^\//, "")
+			file_path = File.join(@seed_directory, uri)
 			if File.exists?(file_path)
 				contents = File.open(file_path, "r").read
 				StubResponse.new(contents)

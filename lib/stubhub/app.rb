@@ -5,8 +5,8 @@ module Stubhub
 	class App
 		attr_accessor :file_store
 
-		def initialize
-			@file_store = FileStore.new
+		def initialize(seed_directory)
+			@file_store = FileStore.new(seed_directory)
 		end
 
 	  def call(env)

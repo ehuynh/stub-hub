@@ -10,7 +10,7 @@ describe Stubhub::App do
   include Rack::Test::Methods
 
 	def app
-		Stubhub::App.new
+		Stubhub::App.new(".")
 	end
 
 	it "returns not found if stubbed response does not exist" do
