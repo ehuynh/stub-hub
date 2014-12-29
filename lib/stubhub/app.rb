@@ -11,8 +11,12 @@ module Stubhub
 
 	  def call(env)
 	  	req = Rack::Request.new env
-	  	stub_file = @file_store.file_for_uri req.path_info
-	  	[200, {"Content-Type" => "text/json"}, [File.open(stub_file, "r").read]]
+	  	stub_response = @file_store.file_for_uri req.path_info
+	  	if !stub_response.empty?
+	  		[200, {"Content-Type" => "text/json"}, [stub_response.contents]]
+	  	else
+	  		[404, {}, [""]]
+	  	end
 	  end
 	end
 end
