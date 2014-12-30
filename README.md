@@ -18,9 +18,25 @@ Or install it yourself as:
 
     $ gem install stubhub
 
-## Usage
+## Quickstart
 
-TODO: Write usage instructions here
+Starting the stub server with the seed directory as the current directory:
+
+		$ stubhub start
+
+Starting the stub server with a differnt seed directory
+
+		$ stubhub start -s "~/path/to/seed/dir"
+
+## Stub files
+
+The stub files are matched to the URIs as follows:
+
+| uri path            | matched file name   |
+| ------------------- | ------------------- |
+| resource            | resource            |
+| resource.json       | resource.json       |
+| /path/to/resource   | path-to-resource    |
 
 ## Contributing
 
