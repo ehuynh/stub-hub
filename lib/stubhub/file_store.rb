@@ -16,7 +16,7 @@ module Stubhub
 	class FileStore
 
 		def initialize(seed_directory)
-			@seed_directory = seed_directory
+			@seed_directory = File.expand_path(seed_directory)
 		end
 
 		def file_for_uri uri
