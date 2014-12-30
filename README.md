@@ -1,6 +1,10 @@
 # Stubhub
 
-TODO: Write a gem description
+Stub an endpoint.
+
+Stubhub helps with developing against an endpoint.
+Use stubbed responses to develop against and you will not have to rely on an endpoint
+that might be a tad unstable.
 
 ## Installation
 
@@ -34,8 +38,8 @@ The stub files are matched to the URIs as follows:
 
 | uri path            | matched file name   |
 | ------------------- | ------------------- |
-| resource            | resource            |
-| resource.json       | resource.json       |
+| /resource           | resource            |
+| /resource.json      | resource.json       |
 | /path/to/resource   | path-to-resource    |
 
 ## Contributing
