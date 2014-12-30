@@ -20,13 +20,18 @@ module Stubhub
 		end
 
 		def file_for_uri uri
-			file_path = File.join(@seed_directory, uri)
+			file_name = translate_uri_to_file_name uri
+			file_path = File.join(@seed_directory, file_name)
 			if File.exists?(file_path)
 				contents = File.open(file_path, "r").read
 				StubResponse.new(contents)
 			else
 				StubResponse.empty_response
 			end
+		end
+
+		def translate_uri_to_file_name uri
+			uri.sub(/^\//, "").gsub(/\//, "-")
 		end
 	end
 end
