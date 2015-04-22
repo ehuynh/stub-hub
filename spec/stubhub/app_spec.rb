@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-require 'stubhub/app'
+require 'stub-hub/app'
 require 'fakefs/spec_helpers'
 require "rack/test"
 

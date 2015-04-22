@@ -1,6 +1,6 @@
 require 'rack'
 require 'thor'
-require 'stubhub/app'
+require 'stub-hub/app'
 
 module Stubhub
   class CLI < Thor

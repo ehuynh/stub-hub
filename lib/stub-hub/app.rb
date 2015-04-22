@@ -1,5 +1,5 @@
 require 'rack'
-require 'stubhub/file_store'
+require 'stub-hub/file_store'
 
 module Stubhub
 	class App

@@ -11,7 +11,7 @@ that might be a tad unstable.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'stubhub'
+gem 'stub-hub'
 ```
 
 And then execute:
@@ -20,7 +20,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install stubhub
+    $ gem install stub-hub
 
 ## Quickstart
 
@@ -44,7 +44,7 @@ The stub files are matched to the URIs as follows:
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/stubhub/fork )
+1. Fork it ( https://github.com/[my-github-username]/stub-hub/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

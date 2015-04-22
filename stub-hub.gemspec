@@ -1,10 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'stubhub/version'
+require 'stub-hub/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "stubhub"
+  spec.name          = "stub-hub"
   spec.version       = Stubhub::VERSION
   spec.authors       = ["Edward Huynh"]
   spec.email         = ["edward@edwardhuynh.com"]

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-require 'stubhub/file_store'
+require 'stub-hub/file_store'
 require 'fakefs/spec_helpers'
 
 describe Stubhub::FileStore do
