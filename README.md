@@ -1,5 +1,7 @@
 # Stubhub
 
+[![Build Status](https://travis-ci.org/ehuynh/stub-hub.svg?branch=master)](https://travis-ci.org/ehuynh/stub-hub)
+
 Stub an endpoint.
 
 Stubhub helps with developing against an endpoint.
