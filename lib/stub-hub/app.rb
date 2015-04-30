@@ -12,7 +12,7 @@ module Stubhub
     def call(env)
       req = Rack::Request.new env
       stub_response = @response_store.response_for_uri req.path_info
-      if !stub_response.empty?
+      unless stub_response.empty?
         [200, {"Content-Type" => "text/json"}, [stub_response.contents]]
       else
         [404, {}, [""]]
