@@ -33,6 +33,21 @@ describe Stubhub::ResponseStore do
 
     end
 
+    context "path with trailing slash" do
+
+      before do
+        @uri = "/test/"
+      end
+
+      it "returns the stubbed response of the stub file where the file name matches the path, ignoring the trailing slash" do
+        File.write("test", "hello world")
+        fs = Stubhub::ResponseStore.new(".")
+        response = fs.response_for_uri(@uri)
+        expect(response.contents).to eq("hello world")
+      end
+
+    end
+
     context "path with more than one segment" do
 
       before do

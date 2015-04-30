@@ -34,7 +34,7 @@ module Stubhub
     end
 
     def file_name_for_uri uri
-      uri.sub(/^\//, "").gsub(/\//, "-")
+      uri.sub(/^\//, "").sub(/\/$/, "").gsub(/\//, "-")
     end
 
     def stub_response uri
