@@ -10,56 +10,26 @@ describe Stubhub::ResponseStore do
   context "finding stub file" do
 
     before do
-      @fs = Stubhub::ResponseStore.new(".")
+      @uri = "/foo/bar"
     end
 
-    it "returns an empty stubbed response if no matching stub file found" do
-      response = @fs.response_for_uri("test")
+    it "returns an empty stubbed response if no matching entry defined in stubhub.yml" do
+      File.write("stubhub.yml", {"responses" => {}}.to_yaml)
+      @fs = Stubhub::ResponseStore.new(".")
+
+      response = @fs.response_for_uri(@uri)
       expect(response).to be_empty
     end
 
-    context "path with one segment" do
-
-      before do
-        @uri = "/test"
-      end
-
-      it "returns the stubbed response of the stub file where the file name matches the path" do
-        File.write("test", "hello world")
-        fs = Stubhub::ResponseStore.new(".")
-        response = fs.response_for_uri(@uri)
-        expect(response.contents).to eq("hello world")
-      end
-
-    end
-
-    context "path with trailing slash" do
-
-      before do
-        @uri = "/test/"
-      end
-
-      it "returns the stubbed response of the stub file where the file name matches the path, ignoring the trailing slash" do
-        File.write("test", "hello world")
-        fs = Stubhub::ResponseStore.new(".")
-        response = fs.response_for_uri(@uri)
-        expect(response.contents).to eq("hello world")
-      end
-
-    end
-
-    context "path with more than one segment" do
-
-      before do
-        @uri = "/path/to/resource"
-      end
-
-      it "returns the stubbed response of the stub file where the file name matches the path where / are replaced by -" do
-        File.write("path-to-resource", "hello world")
-        fs = Stubhub::ResponseStore.new(".")
-        response = fs.response_for_uri(@uri)
-        expect(response.contents).to eq("hello world")
-      end
+    it "returns the stubbed response of the stub file defined in stubhub.yml" do
+      contents = "hello world"
+      file_path = "test.json"
+      File.write("stubhub.yml", {"responses" => {@uri => {"path" => file_path}}}.to_yaml)
+      File.write(file_path, contents)
+      fs = Stubhub::ResponseStore.new(".")
+      
+      response = fs.response_for_uri(@uri)
+      expect(response.contents).to eq(contents)
     end
 
   end
@@ -67,19 +37,25 @@ describe Stubhub::ResponseStore do
   context "seed directory" do
 
     before do
-      File.write("test", "hello world")
+      @uri = "/foo/bar"
+      @contents = "hello world"
+      @file_path = "test.json"
+      File.write("stubhub.yml", {"responses" => {@uri => {"path" => @file_path}}}.to_yaml)
+      File.write(@file_path, @contents)
     end
 
     it "can set the seed directory with a relative path" do
       fs = Stubhub::ResponseStore.new(".")
-      response = fs.response_for_uri("test")
-      expect(response.contents).to eq("hello world")
+
+      response = fs.response_for_uri(@uri)
+      expect(response.contents).to eq(@contents)
     end
 
     it "can set the seed directory with an absolute path" do
       fs = Stubhub::ResponseStore.new(Dir.getwd)
-      response = fs.response_for_uri("test")
-      expect(response.contents).to eq("hello world")
+
+      response = fs.response_for_uri(@uri)
+      expect(response.contents).to eq(@contents)
     end
 
   end
