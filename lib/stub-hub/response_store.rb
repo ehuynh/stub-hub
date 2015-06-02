@@ -16,7 +16,7 @@ module Stubhub
   
   StubEntry = Struct.new(:file_path)
 
-  class StubDataStore
+  class StubDefinitions
 
     def initialize(datastore_file)
       @curr_dir = File.dirname(datastore_file)
@@ -39,11 +39,11 @@ module Stubhub
 
     def initialize(seed_directory)
       @seed_directory = File.expand_path(seed_directory)
-      @datastore = StubDataStore.new(File.join(@seed_directory, "stubhub.yml"))
+      @stub_definitions = StubDefinitions.new(File.join(@seed_directory, "stubhub.yml"))
     end
 
     def response_for_uri uri
-      stub_entry = @datastore.stub_entry_for_uri(uri)
+      stub_entry = @stub_definitions.stub_entry_for_uri(uri)
       if stub_entry then stub_response(stub_entry) else empty_response end
     end
 
